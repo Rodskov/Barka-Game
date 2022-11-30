@@ -10,7 +10,9 @@ public class PlayerControl : MonoBehaviour
     public float runSpeed = 5;
     private float horizontalInput;
     private float verticalInput;
-    private float delayTime = 2;
+
+    private float actionDelay = 2f;
+    private float nextActionTime = 0f;
 
     // Controls movement
     private Vector3 moveUpDown;
@@ -38,26 +40,23 @@ public class PlayerControl : MonoBehaviour
         Move();
 
         // Pertains to player actions; Coroutine is used with IEnumerator
-        delayTime -= Time.deltaTime;
-
-        if (Input.GetKeyDown(KeyCode.Mouse0) && delayTime <= 0)
+        if(Time.time >= nextActionTime)
         {
-            StartCoroutine(AttackLeft());
-        }
+            if (Input.GetKeyDown(KeyCode.Mouse0))
+            {
+                StartCoroutine(AttackLeft());
+                nextActionTime = Time.time + 1f / actionDelay;
+            }
 
-        if (Input.GetKeyDown(KeyCode.Mouse1) && delayTime <= 0)
+            if (Input.GetKeyDown(KeyCode.Mouse1))
+            {
+                StartCoroutine(AttackRight());
+                nextActionTime = Time.time + 1f / actionDelay;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Space))
         {
-            StartCoroutine(AttackRight());
-        }
-
-        if (Input.GetKeyDown(KeyCode.Space) && delayTime <= 0) 
-        { 
-            StartCoroutine(Defend()); 
-        }
-
-        if (delayTime >= 0) 
-        {
-            delayTime -= Time.deltaTime;
+            StartCoroutine(Defend());
         }
     }
 
