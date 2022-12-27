@@ -599,6 +599,7 @@ GameObject:
   - component: {fileID: 5150247408308591850}
   - component: {fileID: 5150247408299078476}
   - component: {fileID: 2542988134358066639}
+  - component: {fileID: 1803704617311734264}
   m_Layer: 0
   m_Name: Mummy3
   m_TagString: Enemy
@@ -661,6 +662,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1803704617311734264
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5150247408308551882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f945628c129ef44fa5c79d156fab928, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Player: {fileID: 0}
 --- !u!1 &5150247408308551884
 GameObject:
   m_ObjectHideFlags: 0

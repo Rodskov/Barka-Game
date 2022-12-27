@@ -148,4 +148,5 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(2f);
         anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 0);
     }
+
 }
