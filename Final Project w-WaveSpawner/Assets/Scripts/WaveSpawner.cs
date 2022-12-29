@@ -16,9 +16,9 @@ public class WaveSpawner : MonoBehaviour
     }
 
     public Wave[] waves;
-    private int nextWave = 0;
+    public int nextWave = 0;
     
-    public Transform[] spawnPoints; 
+    public Transform[] spawnPoints;
 
     public float waveInterval = 5f;
     public float waveCountDown;
@@ -131,8 +131,6 @@ public class WaveSpawner : MonoBehaviour
     void SpawnEnemy (Transform _enemy)
     {
         // Spawn Enemy Here
-
-        Debug.Log("Spawning Enemy: " + _enemy.name);
 
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
         Instantiate(_enemy, _sp.position, _sp.rotation);

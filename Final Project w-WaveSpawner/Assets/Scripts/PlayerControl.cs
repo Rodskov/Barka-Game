@@ -8,6 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed = 3;
     public float runSpeed = 5;
+    
     private float horizontalInput;
     private float verticalInput;
 
@@ -148,5 +149,4 @@ public class PlayerControl : MonoBehaviour
         yield return new WaitForSeconds(2f);
         anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 0);
     }
-
 }
