@@ -10,12 +10,16 @@ public class EnemiesActions : MonoBehaviour
     private Animator monAnim;
     bool monAtk;
     public PlayerStats playerHealth;
-    public int damage = 2;
+    public float health;
+    public int enemydamage = 2;
 
     // Use this for initialization
     void Start()
     {
         monAnim = gameObject.GetComponent<Animator>();
+
+        playerHealth = GameObject.Find("Player").GetComponent<PlayerStats>();
+        health = playerHealth.currentHealth;
 
         // if no target specified, assume the player
         if (target == null)
@@ -61,7 +65,7 @@ public class EnemiesActions : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            playerHealth.TakeDamage(damage);
+//            health.TakeDamage(enemydamage);
         }
     }
 }
