@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -28,10 +29,18 @@ public class Game : MonoBehaviour
 
 
     public int Coins;
+
+
+    public Shop shopReference;
+    public bool isShopOpen;
+    public TextMeshProUGUI buyTimer;
+    public float timeToBuy;
     
     void Start()
     {
-        UpdateAllCoinsUIText(); 
+        UpdateAllCoinsUIText();
+
+        timeToBuy = 10;
     }
     public void UseCoins(int amount)
     {
@@ -48,4 +57,18 @@ public class Game : MonoBehaviour
             allCoinsUIText[i].text = Coins.ToString();
         }
     }
+
+    public void OpenShop()
+    {
+        shopReference.ShopPanel.gameObject.SetActive(true);
+        isShopOpen = true;
+    }
+
+    
+
+    public void CloseShop()
+    {
+        shopReference.ShopPanel.gameObject.SetActive(false);
+    }
+
 }

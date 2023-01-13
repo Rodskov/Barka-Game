@@ -28,6 +28,8 @@ public class WaveSpawner : MonoBehaviour
 
     public SpawnState state = SpawnState.COUNTING;
 
+    public Game shopReference;
+
 
     void Start()
     {
@@ -37,6 +39,8 @@ public class WaveSpawner : MonoBehaviour
         }
 
         waveCountDown = waveInterval;
+
+        shopReference = GameObject.Find("_Game").GetComponent<Game>();
 
     }
 
@@ -49,6 +53,7 @@ public class WaveSpawner : MonoBehaviour
             if (!EnemyStillAlive())
             {
                 WaveCompleted();
+                shopReference.OpenShop();
             }
             else
             {
@@ -118,6 +123,7 @@ public class WaveSpawner : MonoBehaviour
         {
             SpawnEnemy(_wave.enemy);
             yield return new WaitForSeconds(1f / _wave.rate);
+            shopReference.CloseShop();
         }
 
         state = SpawnState.WAITING;

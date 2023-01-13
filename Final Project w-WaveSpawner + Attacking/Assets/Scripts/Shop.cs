@@ -15,12 +15,10 @@ public class Shop : MonoBehaviour
     [SerializeField] List<ShopItem> ShopItemsList;
     [SerializeField] Animator NoCoinsAnim;
 
-
-
     [SerializeField] GameObject ItemTemplate; 
     GameObject Item;
     [SerializeField] Transform ShopScrollView;
-    [SerializeField] GameObject ShopPanel;
+    public GameObject ShopPanel;
     Button buyBtn;
 
     // Start is called before the first frame update
@@ -70,19 +68,6 @@ public class Shop : MonoBehaviour
     }
 
    
-    // Open and Close Shop
-    public void OpenShop()
-    {
-        if (Input.GetKeyDown(KeyCode.L))
-        {
-            ShopPanel.SetActive(true);
-        }
-        
-    }
-    public void CloseShop()
-    {
-        ShopPanel.SetActive(false);    
-    }
-
+    
    
 }
