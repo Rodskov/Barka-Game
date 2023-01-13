@@ -33,14 +33,15 @@ public class Game : MonoBehaviour
 
     public Shop shopReference;
     public bool isShopOpen;
-    public TextMeshProUGUI buyTimer;
-    public float timeToBuy;
+    
+
+  
     
     void Start()
     {
         UpdateAllCoinsUIText();
 
-        timeToBuy = 10;
+       
     }
     public void UseCoins(int amount)
     {
