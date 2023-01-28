@@ -54,6 +54,7 @@ public class WaveSpawner : MonoBehaviour
             {
                 WaveCompleted();
                 shopReference.OpenShop();
+                shopReference.UnlockCursor();
             }
             else
             {
@@ -124,6 +125,7 @@ public class WaveSpawner : MonoBehaviour
             SpawnEnemy(_wave.enemy);
             yield return new WaitForSeconds(1f / _wave.rate);
             shopReference.CloseShop();
+            shopReference.LockCursor();
         }
 
         state = SpawnState.WAITING;

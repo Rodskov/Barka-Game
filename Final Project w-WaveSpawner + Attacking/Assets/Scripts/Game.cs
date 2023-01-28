@@ -35,8 +35,6 @@ public class Game : MonoBehaviour
     public bool isShopOpen;
     
 
-  
-    
     void Start()
     {
         UpdateAllCoinsUIText();
@@ -70,6 +68,20 @@ public class Game : MonoBehaviour
     public void CloseShop()
     {
         shopReference.ShopPanel.gameObject.SetActive(false);
+    }
+
+    public void UnlockCursor()
+    {
+        Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.None;
+    }
+
+    public void LockCursor()
+    {
+        Cursor.visible = false;
+
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
 }

@@ -24,7 +24,12 @@ public class Shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Cursor.visible = true;
+
+        Cursor.lockState = CursorLockMode.None;
+
         int noofItems = ShopItemsList.Count;
+
         for (int i = 0; i < noofItems; i++)
         {
             Item = Instantiate(ItemTemplate, ShopScrollView); 
@@ -67,7 +72,5 @@ public class Shop : MonoBehaviour
         buyBtn.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
     }
 
-   
-    
    
 }
