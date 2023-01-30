@@ -88,13 +88,6 @@ public class Game : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
     }
 
-    public void StartGame()
-    {
-        isGameActive = true;
-
-
-    }
-
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // This will Reload our scene everytime we press restart or play again button.
