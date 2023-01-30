@@ -29,6 +29,7 @@ public class WaveSpawner : MonoBehaviour
     public SpawnState state = SpawnState.COUNTING;
 
     public Game shopReference;
+    public GameObject healthBar;
 
 
     void Start()

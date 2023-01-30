@@ -21,6 +21,8 @@ public class Shop : MonoBehaviour
     public GameObject ShopPanel;
     Button buyBtn;
 
+
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +45,7 @@ public class Shop : MonoBehaviour
             buyBtn.AddEventListener(i, OnShopItemBtnClicked);
         }   
     }
+
     void OnShopItemBtnClicked(int itemIndex)
     {
         if (Game.Instance.HasEnoughCoins(ShopItemsList[itemIndex].Price))

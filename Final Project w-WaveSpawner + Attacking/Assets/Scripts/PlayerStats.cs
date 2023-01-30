@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 
@@ -17,15 +18,13 @@ public class PlayerStats : MonoBehaviour
 
     public float healthdamage = 2;
 
-    public Game restartReference;
+    private Game restartReference;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        currentHealth = maxhealthValue;
-        WaveSpawnerScript = GameObject.Find("SpawnManager").GetComponent<WaveSpawner>();
-        healthBar.SetMaxHealth(maxhealthValue);
+        OnStart();
     }
 
     // Update is called once per frame
@@ -34,6 +33,12 @@ public class PlayerStats : MonoBehaviour
         waveValueMultiplier = WaveSpawnerScript.nextWave + 1;
     }
     
+    public void OnStart()
+    {
+        currentHealth = maxhealthValue;
+        WaveSpawnerScript = GameObject.Find("SpawnManager").GetComponent<WaveSpawner>();
+        healthBar.SetMaxHealth(maxhealthValue);
+    }
 
     // For item pickups
     private void OnTriggerEnter(Collider other)
