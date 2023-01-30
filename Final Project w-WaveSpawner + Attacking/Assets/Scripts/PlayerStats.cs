@@ -17,6 +17,8 @@ public class PlayerStats : MonoBehaviour
 
     public float healthdamage = 2;
 
+    public Game restartReference;
+
 
     // Start is called before the first frame update
     void Start()
@@ -63,5 +65,9 @@ public class PlayerStats : MonoBehaviour
 
         healthBar.SetHealth(currentHealth);
 
+        if (currentHealth <= 0)
+        {
+            restartReference.GameOver();
+        }
     }
 }

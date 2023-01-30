@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class Game : MonoBehaviour
@@ -33,7 +34,11 @@ public class Game : MonoBehaviour
 
     public Shop shopReference;
     public bool isShopOpen;
-    
+
+    public Text deathText;
+    public GameObject restartButton;
+    public bool isGameActive;
+
 
     void Start()
     {
@@ -64,7 +69,6 @@ public class Game : MonoBehaviour
     }
 
     
-
     public void CloseShop()
     {
         shopReference.ShopPanel.gameObject.SetActive(false);
@@ -82,6 +86,25 @@ public class Game : MonoBehaviour
         Cursor.visible = false;
 
         Cursor.lockState = CursorLockMode.Locked;
+    }
+
+    public void StartGame()
+    {
+        isGameActive = true;
+
+
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name); // This will Reload our scene everytime we press restart or play again button.
+    }
+
+    public void GameOver()
+    {
+        restartButton.gameObject.SetActive(true);
+        deathText.gameObject.SetActive(true);
+        isGameActive = false;
     }
 
 }

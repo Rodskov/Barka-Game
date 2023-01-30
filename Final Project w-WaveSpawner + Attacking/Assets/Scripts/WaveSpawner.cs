@@ -136,7 +136,7 @@ public class WaveSpawner : MonoBehaviour
 
 
 
-    void SpawnEnemy (Transform _enemy)
+    public void SpawnEnemy (Transform _enemy)
     {
         // Spawn Enemy Here
 
