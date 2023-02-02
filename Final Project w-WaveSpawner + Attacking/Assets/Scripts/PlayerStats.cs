@@ -16,7 +16,7 @@ public class PlayerStats : MonoBehaviour
 
     public HealthBar healthBar;
 
-    public float healthdamage = 2;
+
 
     private Game restartReference;
 
@@ -64,9 +64,9 @@ public class PlayerStats : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
-    public void TakeDamage(float damage)
+    public void TakeDamage(float enemyDmg)
     {
-        currentHealth -= damage;
+        currentHealth -= enemyDmg;
 
         healthBar.SetHealth(currentHealth);
 

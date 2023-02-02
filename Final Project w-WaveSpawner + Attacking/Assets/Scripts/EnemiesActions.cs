@@ -6,20 +6,18 @@ public class EnemiesActions : MonoBehaviour
 {
     public float speed = 20.0f;
     public float minDist = 1f;
+
     public Transform target;
     private Animator monAnim;
     bool monAtk;
-    public PlayerStats playerHealth;
-    public float health;
-    public int enemydamage = 2;
+
+    public EnemyStats enemyDamage;
+    private float TakeDamage;
 
     // Use this for initialization
     void Start()
     {
         monAnim = gameObject.GetComponent<Animator>();
-
-        playerHealth = GameObject.Find("Player").GetComponent<PlayerStats>();
-        health = playerHealth.currentHealth;
 
         // if no target specified, assume the player
         if (target == null)
@@ -29,7 +27,9 @@ public class EnemiesActions : MonoBehaviour
                 target = GameObject.FindWithTag("Player").GetComponent<Transform>();
             }
         }
-        
+
+        enemyDamage = GetComponent<EnemyStats>();
+        TakeDamage = enemyDamage.enemyAttackValue;
 
     }
 
@@ -60,12 +60,11 @@ public class EnemiesActions : MonoBehaviour
     {
         target = newTarget;
     }
-
-    private void OnCollisionEnter(Collision collision)
+    public void OnTriggerEnter(Collider other)
     {
-        if (collision.gameObject.tag == "Player")
+        if (other.tag == "Player")
         {
-//            health.TakeDamage(enemydamage);
+            other.GetComponent<PlayerStats>().TakeDamage(TakeDamage);
         }
     }
 }

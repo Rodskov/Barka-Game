@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed = 3;
     public float runSpeed = 5;
-    public float jumpForce = 5;
+    public float jumpForce;
     
     private float horizontalInput;
     private float verticalInput;
@@ -58,7 +58,7 @@ public class PlayerControl : MonoBehaviour
                 nextActionTime = Time.time + 1f / actionDelay;
             }
         }
-        if (Input.GetKeyDown(KeyCode.Space))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             StartCoroutine(Defend());
         }
@@ -101,7 +101,7 @@ public class PlayerControl : MonoBehaviour
             {
                 Idle();
             }
-            else if (Input.GetKeyDown(KeyCode.J))
+            else if (Input.GetKeyDown(KeyCode.Space))
             {
                 Jump();
             }

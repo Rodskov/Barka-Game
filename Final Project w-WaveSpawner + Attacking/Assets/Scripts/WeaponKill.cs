@@ -9,10 +9,14 @@ public class WeaponKill : MonoBehaviour
     public GameObject coin;
     public GameObject attackBuff;
     public GameObject healthBuff;
+
+    public PlayerStats playerDamage;
+    private float DamageToEnemy;
     // Start is called before the first frame update
     void Start()
     {
-        
+        playerDamage = GameObject.Find("Player").GetComponent<PlayerStats>();
+        DamageToEnemy = playerDamage.maxattackValue;
     }
 
     // Update is called once per frame
@@ -24,7 +28,8 @@ public class WeaponKill : MonoBehaviour
     {
         if (other.gameObject.tag == "Enemy")
         {
-            Destroy(other.gameObject);
+            other.GetComponent<EnemyStats>().DamageToEnemy(DamageToEnemy);
+
             int chanceNum = Random.Range(1, 12);
             if (chanceNum >= 1 && chanceNum <= 6)
             {
@@ -44,4 +49,6 @@ public class WeaponKill : MonoBehaviour
             Debug.Log("Chance: " + chanceNum);
         }
     }
+
+
 }

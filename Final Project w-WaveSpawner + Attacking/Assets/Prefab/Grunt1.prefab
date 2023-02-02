@@ -350,6 +350,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8827096895766309573}
+  - component: {fileID: 5682962642283555449}
   m_Layer: 0
   m_Name: Axe
   m_TagString: Untagged
@@ -371,6 +372,19 @@ Transform:
   m_Father: {fileID: 8827096895766309589}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!65 &5682962642283555449
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827096895766476517}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 22.237179, y: 116.28776, z: 80.52012}
+  m_Center: {x: -1.6181341, y: 48.8444, z: 37.402195}
 --- !u!1 &8827096895766476519
 GameObject:
   m_ObjectHideFlags: 0
@@ -444,8 +458,9 @@ GameObject:
   - component: {fileID: 8827096895766309579}
   - component: {fileID: 8827096895773754657}
   - component: {fileID: -6162234510650967843}
-  - component: {fileID: 908617357361997118}
   - component: {fileID: -4612319454627054748}
+  - component: {fileID: 908617357361997118}
+  - component: {fileID: 8454693547019930100}
   m_Layer: 0
   m_Name: Grunt1
   m_TagString: Enemy
@@ -505,6 +520,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!65 &-4612319454627054748
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8827096895766476523}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 2.5259726, y: 2.2328575, z: 1}
+  m_Center: {x: -0.15031828, y: 0.91129553, z: 0}
 --- !u!114 &908617357361997118
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -520,21 +548,21 @@ MonoBehaviour:
   speed: 20
   minDist: 75
   target: {fileID: 0}
-  playerHealth: {fileID: 1865853521379726935, guid: 8af9f5ddcae2c604996797d59822f54c, type: 3}
-  damage: 2
---- !u!65 &-4612319454627054748
-BoxCollider:
+  enemyDamage: {fileID: 8454693547019930100}
+--- !u!114 &8454693547019930100
+MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8827096895766476523}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 2.5259726, y: 2.2328575, z: 1}
-  m_Center: {x: -0.15031828, y: 0.91129553, z: 0}
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f26299e7318e6c44aa636c13a4457608, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  enemyHealth: 24
+  enemyAttackValue: 7
 --- !u!1 &8827096895766476525
 GameObject:
   m_ObjectHideFlags: 0
