@@ -14,9 +14,12 @@ public class EnemiesActions : MonoBehaviour
     public EnemyStats enemyDamage;
     private float TakeDamage;
 
+    private AudioSource monAttackSound;
+
     // Use this for initialization
     void Start()
     {
+        monAttackSound = GetComponent<AudioSource>();
         monAnim = gameObject.GetComponent<Animator>();
 
         // if no target specified, assume the player
@@ -63,7 +66,9 @@ public class EnemiesActions : MonoBehaviour
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
+
         {
+            monAttackSound.Play();
             other.GetComponent<PlayerStats>().TakeDamage(TakeDamage);
         }
     }

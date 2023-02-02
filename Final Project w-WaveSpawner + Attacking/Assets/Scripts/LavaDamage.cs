@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class LavaDamage : MonoBehaviour
 {
-    [SerializeField] float time = 2f, damge = 1f;
+    public AudioSource burnSound;
+    public float time = 2f;
+    public float damage = 1f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -17,20 +19,10 @@ public class LavaDamage : MonoBehaviour
 
     IEnumerator TakeDamage(float time, PlayerStats currentHealth)
     {
-        currentHealth.TakeDamage(damge);
+        burnSound.Play();
+        currentHealth.TakeDamage(damage);
         GetComponent<BoxCollider>().isTrigger = false;
         yield return new WaitForSeconds(time);
         GetComponent<BoxCollider>().isTrigger = true;
-    }
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }

@@ -8,7 +8,7 @@ public class PlayerControl : MonoBehaviour
     public float moveSpeed;
     public float walkSpeed = 3;
     public float runSpeed = 5;
-    public float jumpForce;
+    public float jumpForce = 100;
     
     private float horizontalInput;
     private float verticalInput;
@@ -20,7 +20,6 @@ public class PlayerControl : MonoBehaviour
     private Vector3 moveUpDown;
     private Vector3 moveLeftRight;
     private Vector3 velocity;
-    private Rigidbody playerRb;
 
     // For the player to not be stuck in the air
     private bool isGrounded;
@@ -31,12 +30,14 @@ public class PlayerControl : MonoBehaviour
     // To trigger certain things
     private CharacterController controller;
     private Animator anim;
+    public AudioSource leftAttackSound;
+    public AudioSource rightAttackSound;
+    public AudioSource shieldSound;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
-        playerRb = GetComponent<Rigidbody>();
     }
 
     void Update()
@@ -101,10 +102,12 @@ public class PlayerControl : MonoBehaviour
             {
                 Idle();
             }
-            else if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Jump();
-            }
+        }
+
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded)
+        {
+            Debug.Log("JUMP!!");
+            Jump();
         }
 
         controller.Move(moveUpDown * moveSpeed * Time.deltaTime);
@@ -116,32 +119,27 @@ public class PlayerControl : MonoBehaviour
 
     void Jump()
     {
-        playerRb.AddForce(Vector3.up * jumpForce, ForceMode.Impulse);
-        anim.SetBool("Jump", false); 
+        velocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);
     }
-
-    void Walk()
-    {
-        moveSpeed = walkSpeed;
-        anim.SetFloat("Walk", 0.25f, 0.1f, Time.deltaTime);
-    }
-
-    void Run()
-    {
-        moveSpeed = runSpeed;
-        anim.SetFloat("Walk", 0.5f, 0.1f, Time.deltaTime);
-    }
-    
     void Idle()
     {
         anim.SetFloat("Walk", 0, 0.1f, Time.deltaTime);
     }
-
-    
+    void Walk()
+    {
+        moveSpeed = walkSpeed;
+        anim.SetFloat("Walk", 0.5f, 0.1f, Time.deltaTime);
+    }
+    void Run()
+    {
+        moveSpeed = runSpeed;
+        anim.SetFloat("Walk", 1, 0.1f, Time.deltaTime);
+    }
 
     // Allows smooth animation for player controls while moving; Uses Avatar Mask
     private IEnumerator AttackLeft()
     {
+        leftAttackSound.Play();
         anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 1);
         anim.SetTrigger("AttackLeft");
 
@@ -151,6 +149,7 @@ public class PlayerControl : MonoBehaviour
 
     private IEnumerator AttackRight()
     {
+        rightAttackSound.Play();
         anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 1);
         anim.SetTrigger("AttackRight");
 
@@ -159,6 +158,7 @@ public class PlayerControl : MonoBehaviour
     }
     private IEnumerator Defend()
     {
+        shieldSound.Play();
         anim.SetLayerWeight(anim.GetLayerIndex("Attack Layer"), 1);
         anim.SetTrigger("Defend");
 

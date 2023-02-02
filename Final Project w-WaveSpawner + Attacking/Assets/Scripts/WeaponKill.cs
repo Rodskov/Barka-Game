@@ -18,12 +18,6 @@ public class WeaponKill : MonoBehaviour
         playerDamage = GameObject.Find("Player").GetComponent<PlayerStats>();
         DamageToEnemy = playerDamage.maxattackValue;
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")
@@ -46,7 +40,6 @@ public class WeaponKill : MonoBehaviour
                 Vector3 healthBuffSpawnPos = new Vector3(other.transform.position.x, 50, other.transform.position.z);
                 Instantiate(healthBuff, healthBuffSpawnPos, Quaternion.identity);
             }
-            Debug.Log("Chance: " + chanceNum);
         }
     }
 

@@ -28,8 +28,8 @@ public class Game : MonoBehaviour
 
     [SerializeField] Text[] allCoinsUIText;
 
-
-    public int Coins;
+    private PlayerStats PlayerStatsScript;
+    public float Coins;
 
 
     public Shop shopReference;
@@ -42,9 +42,9 @@ public class Game : MonoBehaviour
 
     void Start()
     {
+        PlayerStatsScript = GameObject.Find("Player").GetComponent<PlayerStats>();
+        Coins = PlayerStatsScript.playerCoins;
         UpdateAllCoinsUIText();
-
-       
     }
     public void UseCoins(int amount)
     {
@@ -77,14 +77,12 @@ public class Game : MonoBehaviour
     public void UnlockCursor()
     {
         Cursor.visible = true;
-
         Cursor.lockState = CursorLockMode.None;
     }
 
     public void LockCursor()
     {
         Cursor.visible = false;
-
         Cursor.lockState = CursorLockMode.Locked;
     }
 

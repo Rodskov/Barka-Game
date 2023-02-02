@@ -7,18 +7,17 @@ using UnityEngine;
 public class PlayerStats : MonoBehaviour
 {
     public float maxhealthValue = 20;
-    public float currentHealth;
     public float maxattackValue = 5;
     public float playerCoins;
     private float waveValueMultiplier;
 
     private WaveSpawner WaveSpawnerScript;
-
     public HealthBar healthBar;
-
-
-
     private Game restartReference;
+
+    public AudioSource healthSound;
+    public AudioSource attackBuffSound;
+    public AudioSource coinSound;
 
 
     // Start is called before the first frame update
@@ -35,7 +34,6 @@ public class PlayerStats : MonoBehaviour
     
     public void OnStart()
     {
-        currentHealth = maxhealthValue;
         WaveSpawnerScript = GameObject.Find("SpawnManager").GetComponent<WaveSpawner>();
         healthBar.SetMaxHealth(maxhealthValue);
     }
@@ -47,6 +45,7 @@ public class PlayerStats : MonoBehaviour
         {
             playerCoins += waveValueMultiplier;
             Debug.Log("Coins: " + playerCoins);
+            coinSound.Play();
             Destroy(other.gameObject);
         }
 
@@ -54,6 +53,7 @@ public class PlayerStats : MonoBehaviour
         {
             maxattackValue = Mathf.Round(maxattackValue + (waveValueMultiplier * 1.5f));
             Debug.Log("Attack Value:" + maxattackValue);
+            attackBuffSound.Play();
             Destroy(other.gameObject);
         }
 
@@ -61,16 +61,17 @@ public class PlayerStats : MonoBehaviour
         {
             maxhealthValue = Mathf.Round(maxhealthValue + (waveValueMultiplier * 5f));
             Debug.Log("Health Value:" + maxhealthValue);
+            healthSound.Play();
             Destroy(other.gameObject);
         }
     }
     public void TakeDamage(float enemyDmg)
     {
-        currentHealth -= enemyDmg;
+        maxhealthValue -= enemyDmg;
 
-        healthBar.SetHealth(currentHealth);
+        healthBar.SetHealth(maxhealthValue);
 
-        if (currentHealth <= 0)
+        if (maxhealthValue <= 0)
         {
             restartReference.GameOver();
         }
