@@ -33,7 +33,7 @@ public class PlayerStats : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        coinText.text = " " + playerCoins;
+        coinText.text = "" + playerCoins;
         waveValueMultiplier = WaveSpawnerScript.nextWave + 1;
     }
 
@@ -47,25 +47,21 @@ public class PlayerStats : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Coin"))
-        { 
-            playerCoins += waveValueMultiplier;
+        {
+            AddCoins();
             coinSound.Play();
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("AttackBuff"))
         {
-            maxattackValue = Mathf.Round(maxattackValue + (waveValueMultiplier * 1.5f));
-            Debug.Log("Attack Value:" + maxattackValue);
-            attackBuffSound.Play();
+            AttackBoost();
             Destroy(other.gameObject);
         }
 
         if (other.CompareTag("HealthBuff"))
         {
-            maxhealthValue = Mathf.Round(maxhealthValue + (waveValueMultiplier * 5f));
-            Debug.Log("Health Value:" + maxhealthValue);
-            healthSound.Play();
+            HealthBoost();
             Destroy(other.gameObject);
         }
     }
@@ -83,5 +79,24 @@ public class PlayerStats : MonoBehaviour
         }
     }
     
+    public void AddCoins()
+    {
+        playerCoins += waveValueMultiplier;
+    }
+
+    public void AttackBoost()
+    {
+        maxattackValue = Mathf.Round(maxattackValue + (waveValueMultiplier * 1.5f));
+        Debug.Log("Attack Value:" + maxattackValue);
+        attackBuffSound.Play();
+    }
+
+
+    public void HealthBoost()
+    {
+        maxhealthValue = Mathf.Round(maxhealthValue + (waveValueMultiplier * 5f));
+        Debug.Log("Health Value:" + maxhealthValue);
+        healthSound.Play();
+    }
     
 }

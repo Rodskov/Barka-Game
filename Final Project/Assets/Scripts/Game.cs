@@ -26,7 +26,7 @@ public class Game : MonoBehaviour
     }
     #endregion
 
-    [SerializeField] Text[] allCoinsUIText;
+    public TextMeshProUGUI coinText;
 
     private PlayerStats PlayerStatsScript;
     public float Coins;
@@ -55,12 +55,10 @@ public class Game : MonoBehaviour
     {
         return (Coins >= amount);
     }
+
     public void UpdateAllCoinsUIText()
     {
-        for (int i = 0; i < int.MaxValue; i++)
-        {
-            allCoinsUIText[i].text = Coins.ToString();
-        }
+        coinText.text = "" + Coins;
     }
 
     public void OpenShop()

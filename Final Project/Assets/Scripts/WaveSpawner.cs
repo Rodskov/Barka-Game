@@ -1,23 +1,25 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public class WaveSpawner : MonoBehaviour
 {
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
+
     [System.Serializable] // Allows us to modify the values inside this function.
     public class Wave
     {
         public string name;
-        public Transform enemy;
+        public Transform[] enemy;
         public int count;
         public float rate;
     }
 
     public Wave[] waves;
     public int nextWave = 0;
-    
+
     public Transform[] spawnPoints;
 
     public float waveInterval = 5f;
@@ -94,8 +96,8 @@ public class WaveSpawner : MonoBehaviour
         {
             nextWave++;
         }
-        
-        
+
+
     }
 
 
@@ -129,19 +131,21 @@ public class WaveSpawner : MonoBehaviour
             shopReference.LockCursor();
         }
 
+
+
         state = SpawnState.WAITING;
         // Wait for player to kill all..
 
         yield break;
-    }   
+    }
 
 
 
-    public void SpawnEnemy (Transform _enemy)
+    public void SpawnEnemy(Transform[] _enemy)
     {
         // Spawn Enemy Here
-
+        int randomIndex = Random.Range(0, _enemy.Count());
         Transform _sp = spawnPoints[Random.Range(0, spawnPoints.Length)];
-        Instantiate(_enemy, _sp.position, _sp.rotation);
+        Instantiate(_enemy[randomIndex], _sp.position, _sp.rotation);
     }
 }

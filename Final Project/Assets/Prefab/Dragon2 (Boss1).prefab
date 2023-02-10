@@ -663,6 +663,7 @@ GameObject:
   - component: {fileID: 5946122010653456868}
   - component: {fileID: 7802537855512859241}
   - component: {fileID: -8538305991192839861}
+  - component: {fileID: 6575156208436185800}
   m_Layer: 0
   m_Name: Dragon2 (Boss1)
   m_TagString: Enemy
@@ -1042,6 +1043,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &6575156208436185800
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7592748297877749258}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 7.595143, y: 6.6684923, z: 13.22154}
+  m_Center: {x: 0.14869694, y: 2.8342457, z: -2.5779867}
 --- !u!1 &7592748297877749532
 GameObject:
   m_ObjectHideFlags: 0

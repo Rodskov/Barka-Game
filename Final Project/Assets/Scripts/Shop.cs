@@ -21,6 +21,8 @@ public class Shop : MonoBehaviour
     public GameObject ShopPanel;
     Button buyBtn;
 
+    public Game gameReference;
+
 
 
     // Start is called before the first frame update
@@ -48,17 +50,19 @@ public class Shop : MonoBehaviour
 
     void OnShopItemBtnClicked(int itemIndex)
     {
-        if (Game.Instance.HasEnoughCoins(ShopItemsList[itemIndex].Price))
+        if (gameReference.HasEnoughCoins(ShopItemsList[itemIndex].Price))
         {
-            Game.Instance.UseCoins(ShopItemsList[itemIndex].Price);
-            // Purchase Item
-            ShopItemsList[itemIndex].IsPurchased = true;
-            // Disable Button
+            gameReference.UseCoins(ShopItemsList[itemIndex].Price); // Purchase Item
+
+            ShopItemsList[itemIndex].IsPurchased = true; // Disable Button
+            
+            gameReference.Coins -= ShopItemsList[itemIndex].Price;
+
             buyBtn = ShopScrollView.GetChild(itemIndex).GetChild(2).GetComponent<Button>();
             DisableBuyBtn();
 
             // Change UI Text: Coins
-            Game.Instance.UpdateAllCoinsUIText();
+            gameReference.UpdateAllCoinsUIText();
         }
         else
         {
@@ -72,7 +76,7 @@ public class Shop : MonoBehaviour
     void DisableBuyBtn()
     {
         buyBtn.interactable = false;
-        buyBtn.transform.GetChild(0).GetComponent<Text>().text = "PURCHASED";
+        buyBtn.transform.GetChild(0).GetComponent<Text>().text = "ACQUIRED";
     }
 
    
