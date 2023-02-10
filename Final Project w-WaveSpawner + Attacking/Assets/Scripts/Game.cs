@@ -35,7 +35,7 @@ public class Game : MonoBehaviour
     public Shop shopReference;
     public bool isShopOpen;
 
-    public Text deathText;
+    public TextMeshProUGUI deathText;
     public GameObject restartButton;
     public bool isGameActive;
 
@@ -45,6 +45,7 @@ public class Game : MonoBehaviour
         PlayerStatsScript = GameObject.Find("Player").GetComponent<PlayerStats>();
         Coins = PlayerStatsScript.playerCoins;
         UpdateAllCoinsUIText();
+        isGameActive = true;
     }
     public void UseCoins(int amount)
     {
@@ -89,13 +90,6 @@ public class Game : MonoBehaviour
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name); // This will Reload our scene everytime we press restart or play again button.
-    }
-
-    public void GameOver()
-    {
-        restartButton.gameObject.SetActive(true);
-        deathText.gameObject.SetActive(true);
-        isGameActive = false;
     }
 
 }

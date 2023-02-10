@@ -3,35 +3,40 @@ using System.Collections.Generic;
 using System.Runtime.CompilerServices;
 using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
+using TMPro;
 
 public class PlayerStats : MonoBehaviour
 {
     public float maxhealthValue = 20;
     public float maxattackValue = 5;
     public float playerCoins;
+    public TextMeshProUGUI coinText;
+
     private float waveValueMultiplier;
 
     private WaveSpawner WaveSpawnerScript;
     public HealthBar healthBar;
-    private Game restartReference;
+    private GameManager GameManager;
+    public bool gameOver = false;
 
     public AudioSource healthSound;
     public AudioSource attackBuffSound;
     public AudioSource coinSound;
-
-
+    
     // Start is called before the first frame update
     void Start()
     {
         OnStart();
+        GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
-
+   
     // Update is called once per frame
     void Update()
     {
+        coinText.text = " " + playerCoins;
         waveValueMultiplier = WaveSpawnerScript.nextWave + 1;
     }
-    
+
     public void OnStart()
     {
         WaveSpawnerScript = GameObject.Find("SpawnManager").GetComponent<WaveSpawner>();
@@ -42,9 +47,8 @@ public class PlayerStats : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Coin"))
-        {
+        { 
             playerCoins += waveValueMultiplier;
-            Debug.Log("Coins: " + playerCoins);
             coinSound.Play();
             Destroy(other.gameObject);
         }
@@ -73,7 +77,11 @@ public class PlayerStats : MonoBehaviour
 
         if (maxhealthValue <= 0)
         {
-            restartReference.GameOver();
+            GameManager.gameOver();
+            gameOver = true;
+            Debug.Log("Game Over");
         }
     }
+    
+    
 }

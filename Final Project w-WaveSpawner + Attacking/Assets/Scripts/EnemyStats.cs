@@ -11,7 +11,6 @@ public class EnemyStats : MonoBehaviour
     private AudioSource enemyDeathSound;
     public ParticleSystem bloodParticles;
     public ParticleSystem deathParticles;
-
     void Start()
     {
         sounds = GetComponents<AudioSource>();
