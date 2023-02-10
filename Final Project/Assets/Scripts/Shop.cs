@@ -50,13 +50,15 @@ public class Shop : MonoBehaviour
 
     void OnShopItemBtnClicked(int itemIndex)
     {
-        if (gameReference.HasEnoughCoins(ShopItemsList[itemIndex].Price))
+        int itemPrice = ShopItemsList[itemIndex].Price;
+
+        if (gameReference.HasEnoughCoins(itemPrice))
         {
-            gameReference.UseCoins(ShopItemsList[itemIndex].Price); // Purchase Item
+            gameReference.UseCoins(itemPrice); // Purchase Item
 
             ShopItemsList[itemIndex].IsPurchased = true; // Disable Button
             
-            gameReference.Coins -= ShopItemsList[itemIndex].Price;
+            gameReference.Coins -= itemPrice;
 
             buyBtn = ShopScrollView.GetChild(itemIndex).GetChild(2).GetComponent<Button>();
             DisableBuyBtn();
