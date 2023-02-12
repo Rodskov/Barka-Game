@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -16,7 +17,7 @@ public class WaveSpawner : MonoBehaviour
         public int count;
         public float rate;
     }
-
+    public Text finishedWaveText;
     public Wave[] waves;
     public int nextWave = 0;
 
@@ -29,13 +30,16 @@ public class WaveSpawner : MonoBehaviour
 
 
     public SpawnState state = SpawnState.COUNTING;
+    public bool wave = false;
 
     public Game shopReference;
     public GameObject healthBar;
+  
 
 
     void Start()
     {
+        finishedWaveText.gameObject.SetActive(false);
         if (spawnPoints.Length == 0)
         {
             Debug.LogError("No spawn points referenced.");
@@ -45,6 +49,7 @@ public class WaveSpawner : MonoBehaviour
 
         shopReference = GameObject.Find("_Game").GetComponent<Game>();
 
+        
     }
 
 
@@ -55,6 +60,7 @@ public class WaveSpawner : MonoBehaviour
 
             if (!EnemyStillAlive())
             {
+               
                 WaveCompleted();
                 shopReference.OpenShop();
                 shopReference.UnlockCursor();
@@ -90,6 +96,7 @@ public class WaveSpawner : MonoBehaviour
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
+            finishedWaveText.gameObject.SetActive(true);
             Debug.Log("ALL WAVES COMPLETE! Looping...");
         }
         else

@@ -5,12 +5,14 @@ using Unity.PlasticSCM.Editor.WebApi;
 using UnityEngine;
 using TMPro;
 
+
 public class PlayerStats : MonoBehaviour
 {
     public float maxhealthValue = 20;
     public float maxattackValue = 5;
     public float playerCoins;
     public TextMeshProUGUI coinText;
+
 
     private float waveValueMultiplier;
 
@@ -28,6 +30,7 @@ public class PlayerStats : MonoBehaviour
     {
         OnStart();
         GameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
+        coinText.gameObject.SetActive(true);
     }
    
     // Update is called once per frame
@@ -73,9 +76,10 @@ public class PlayerStats : MonoBehaviour
 
         if (maxhealthValue <= 0)
         {
-            GameManager.gameOver();
             gameOver = true;
+            GameManager.gameOver();
             Debug.Log("Game Over");
+            coinText.gameObject.SetActive(false);
         }
     }
     

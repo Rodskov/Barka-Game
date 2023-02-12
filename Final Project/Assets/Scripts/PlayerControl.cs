@@ -13,6 +13,7 @@ public class PlayerControl : MonoBehaviour
     private float horizontalInput;
     private float verticalInput;
 
+    private PlayerStats PlayerStats;
     private float actionDelay = 2f;
     private float nextActionTime = 0f;
 
@@ -38,6 +39,7 @@ public class PlayerControl : MonoBehaviour
     {
         controller = GetComponent<CharacterController>();
         anim = GetComponentInChildren<Animator>();
+        PlayerStats = GameObject.Find("Player Stats").GetComponent<PlayerStats>();
     }
 
     void Update()
