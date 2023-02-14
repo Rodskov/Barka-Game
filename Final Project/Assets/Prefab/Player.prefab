@@ -183,10 +183,14 @@ MonoBehaviour:
   moveSpeed: 50
   walkSpeed: 20
   runSpeed: 20
+  jumpForce: 100
   groundCheckDistance: 0.2
   groundMask:
     serializedVersion: 2
     m_Bits: 64
+  leftAttackSound: {fileID: 0}
+  rightAttackSound: {fileID: 0}
+  shieldSound: {fileID: 0}
 --- !u!114 &1865853521379726935
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -199,11 +203,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf59d12b9613f574883cdaa86a611ada, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxhealthValue: 20
-  currentHealth: 0
-  maxattackValue: 5
+  maxhealthValue: 200
+  maxattackValue: 10
   playerCoins: 0
+  coinText: {fileID: 0}
   healthBar: {fileID: 0}
+  gameOver: 0
+  healthSound: {fileID: 0}
+  attackBuffSound: {fileID: 0}
+  coinSound: {fileID: 0}
 --- !u!65 &277227253
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -212,11 +220,11 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1865853521379726924}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.1270618, y: 2.0175512, z: 1.0744084}
-  m_Center: {x: 0.0102637615, y: 0.50877523, z: 0.03720417}
+  m_Size: {x: 2.1270618, y: 2.0175512, z: 1.405477}
+  m_Center: {x: 0.0102637615, y: 0.50877523, z: -0.09340878}
 --- !u!1001 &1865853520895869111
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -232,6 +240,10 @@ PrefabInstance:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 4f4350a26446f0d438312e3635862da2, type: 2}
+    - target: {fileID: 2066896392029128874, guid: 45288819fde2143449a96207b14db0bb, type: 3}
+      propertyPath: m_ApplyRootMotion
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2066896392038131574, guid: 45288819fde2143449a96207b14db0bb, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -345,3 +357,4 @@ MonoBehaviour:
   coin: {fileID: 5464251835085246618, guid: b3b6e7371f6e56847995938f1d964fc7, type: 3}
   attackBuff: {fileID: 8867429415660488376, guid: a0f77589b0720ef4697c4be76e56c5b5, type: 3}
   healthBuff: {fileID: 134434735295698450, guid: 5858d9402c20bd940a5e246473f39f10, type: 3}
+  playerDamage: {fileID: 0}

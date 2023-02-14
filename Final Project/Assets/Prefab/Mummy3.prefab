@@ -678,8 +678,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.94536495, y: 1.1485189, z: 0.75052094}
-  m_Center: {x: 0.00076362607, y: 0.5900798, z: 0.09056732}
+  m_Size: {x: 0.94536495, y: 1.1485189, z: 0.74473554}
+  m_Center: {x: 0.00076362607, y: 0.5900798, z: 0.087674655}
 --- !u!114 &-8661896044425821826
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -708,8 +708,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26299e7318e6c44aa636c13a4457608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 15
-  enemyAttackValue: 7
+  enemyHealth: 12
+  enemyAttackValue: 3
   bloodParticles: {fileID: 12624576599672634, guid: 69e5bb50d84a4a843bd58b6362f69831, type: 3}
   deathParticles: {fileID: 0}
 --- !u!82 &-1690426353340961799

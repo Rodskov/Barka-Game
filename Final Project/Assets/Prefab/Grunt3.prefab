@@ -935,8 +935,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26299e7318e6c44aa636c13a4457608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 50
-  enemyAttackValue: 15
+  enemyHealth: 12
+  enemyAttackValue: 3
   bloodParticles: {fileID: 12624576599672634, guid: 69e5bb50d84a4a843bd58b6362f69831, type: 3}
   deathParticles: {fileID: 0}
 --- !u!82 &-6095643726555290345

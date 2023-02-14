@@ -2339,6 +2339,7 @@ GameObject:
   - component: {fileID: 2433246688562818046}
   - component: {fileID: -9132099501710773675}
   - component: {fileID: -7186315196637482364}
+  - component: {fileID: 4605055656108675017}
   m_Layer: 0
   m_Name: Dragon3 (Mini-Boss2)
   m_TagString: Enemy
@@ -2426,8 +2427,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f26299e7318e6c44aa636c13a4457608, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  enemyHealth: 250
-  enemyAttackValue: 25
+  enemyHealth: 70
+  enemyAttackValue: 10
   bloodParticles: {fileID: 12624576599672634, guid: 69e5bb50d84a4a843bd58b6362f69831, type: 3}
   deathParticles: {fileID: 0}
 --- !u!82 &2433246688562818046
@@ -2693,7 +2694,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 0.1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2718,6 +2719,19 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!65 &4605055656108675017
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7939281028699320298}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 8.716594, y: 5.0808477, z: 10.846611}
+  m_Center: {x: 0.6683936, y: 2.040423, z: 0.29094782}
 --- !u!1 &7939281028699321244
 GameObject:
   m_ObjectHideFlags: 0

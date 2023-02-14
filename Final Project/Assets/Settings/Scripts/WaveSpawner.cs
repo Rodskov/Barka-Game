@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class WaveSpawner : MonoBehaviour
 {
@@ -34,7 +35,8 @@ public class WaveSpawner : MonoBehaviour
 
     public Game shopReference;
     public GameObject healthBar;
-  
+    public TextMeshProUGUI waveText;
+    public GameObject canvas;
 
 
     void Start()
@@ -75,6 +77,8 @@ public class WaveSpawner : MonoBehaviour
         {
             if (state != SpawnState.SPAWNING)
             {
+                canvas.gameObject.SetActive(false);
+                finishedWaveText.gameObject.SetActive(false);
                 StartCoroutine(SpawnWave(waves[nextWave]));
             }
         }
@@ -88,19 +92,23 @@ public class WaveSpawner : MonoBehaviour
 
     void WaveCompleted()
     {
+        finishedWaveText.gameObject.SetActive(false);
+        canvas.gameObject.SetActive(false);
         Debug.Log("Wave Completed!");
-
         state = SpawnState.COUNTING;
         waveCountDown = waveInterval;
 
         if (nextWave + 1 > waves.Length - 1)
         {
             nextWave = 0;
-            finishedWaveText.gameObject.SetActive(true);
             Debug.Log("ALL WAVES COMPLETE! Looping...");
+            finishedWaveText.gameObject.SetActive(true);
+            canvas.gameObject.SetActive(true);
         }
         else
         {
+            canvas.gameObject.SetActive(false);
+            finishedWaveText.gameObject.SetActive(false);
             nextWave++;
         }
 
@@ -127,7 +135,8 @@ public class WaveSpawner : MonoBehaviour
     // Allows us to wait before starting a new wave
     IEnumerator SpawnWave(Wave _wave)
     {
-        Debug.Log("Spawning Wave: " + _wave.name);
+        waveText.text = "" + _wave.name;
+        Debug.Log("Spawning " + _wave.name);
         state = SpawnState.SPAWNING;
 
         for (int i = 0; i < _wave.count; i++)
