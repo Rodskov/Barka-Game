@@ -24,6 +24,7 @@ public class PlayerStats : MonoBehaviour
     public AudioSource healthSound;
     public AudioSource attackBuffSound;
     public AudioSource coinSound;
+    public AudioSource deathSound;
     
     // Start is called before the first frame update
     void Start()
@@ -76,6 +77,7 @@ public class PlayerStats : MonoBehaviour
 
         if (maxhealthValue <= 0)
         {
+            deathSound.Play();
             gameOver = true;
             GameManager.gameOver();
             Debug.Log("Game Over");
