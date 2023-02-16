@@ -12,12 +12,16 @@ public class WeaponKill : MonoBehaviour
 
     public PlayerStats playerDamage;
     private float DamageToEnemy;
-    // Start is called before the first frame update
+
+    // Initializes the player's damage
     void Start()
     {
         playerDamage = GameObject.Find("Player").GetComponent<PlayerStats>();
         DamageToEnemy = playerDamage.maxattackValue;
     }
+    // If the attack hits the enemy, damage is dealt
+    // If the enemy dies, pickups are dropped where the enemies died
+    // The pickups dropped are based on a random number generated
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.tag == "Enemy")

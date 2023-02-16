@@ -63,6 +63,7 @@ public class EnemiesActions : MonoBehaviour
     {
         target = newTarget;
     }
+    // On contact with the player the enemy will damage the player
     public void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")

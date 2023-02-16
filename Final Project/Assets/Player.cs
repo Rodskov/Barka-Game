@@ -10,14 +10,12 @@ public class Player : MonoBehaviour
 
 	public HealthBar healthBar;
 
-    // Start is called before the first frame update
+    // THIS IS A TEST SCRIPT DO NOT TOUCH
     void Start()
     {
 		currentHealth = maxHealth;
 		healthBar.SetMaxHealth(maxHealth);
     }
-
-    // Update is called once per frame
     void Update()
     {
 		if (Input.GetKeyDown(KeyCode.Space))
@@ -25,7 +23,6 @@ public class Player : MonoBehaviour
 			TakeDamage(20);
 		}
     }
-
 	void TakeDamage(int damage)
 	{
 		currentHealth -= damage;

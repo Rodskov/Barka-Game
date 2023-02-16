@@ -9,8 +9,8 @@ public class WaveSpawner : MonoBehaviour
 {
     public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
-
-    [System.Serializable] // Allows us to modify the values inside this function.
+    // This script is for spawning waves of enemies
+    [System.Serializable]
     public class Wave
     {
         public string name;
@@ -38,7 +38,7 @@ public class WaveSpawner : MonoBehaviour
     public TextMeshProUGUI waveText;
     public GameObject canvas;
 
-
+    // Starts spawning when the game starts
     void Start()
     {
         finishedWaveText.gameObject.SetActive(false);
@@ -54,7 +54,9 @@ public class WaveSpawner : MonoBehaviour
         
     }
 
-
+    // Checks if the wave is not yet finished before spawning another wave
+    // There is a countdown after the first wave before proceeding to the next wave
+    // During the countdown, the shop is shown/active
     void Update()
     {
         if (state == SpawnState.WAITING)
@@ -89,7 +91,7 @@ public class WaveSpawner : MonoBehaviour
 
     }
 
-
+    // Tells the player when a wave is finished
     void WaveCompleted()
     {
         finishedWaveText.gameObject.SetActive(false);
@@ -114,8 +116,7 @@ public class WaveSpawner : MonoBehaviour
 
 
     }
-
-
+    // Returns true bool value if enemies are still alive, else false
     bool EnemyStillAlive()
     {
         searchCountDown -= Time.deltaTime;

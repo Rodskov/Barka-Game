@@ -69,6 +69,7 @@ public class PlayerStats : MonoBehaviour
             Destroy(other.gameObject);
         }
     }
+    // This calculates the amount of damage the player receives 
     public void TakeDamage(float enemyDmg)
     {
         maxhealthValue -= enemyDmg;
@@ -84,20 +85,19 @@ public class PlayerStats : MonoBehaviour
             coinText.gameObject.SetActive(false);
         }
     }
-    
+    // The player receives coins from the pickups and the value is based on the current wave
     public void AddCoins()
     {
         playerCoins += waveValueMultiplier;
     }
-
+    // The player receives attack boost from the pickups and the value is based on the current wave
     public void AttackBoost()
     {
         maxattackValue = Mathf.Round(maxattackValue + (waveValueMultiplier * 1.5f));
         Debug.Log("Attack Value:" + maxattackValue);
         attackBuffSound.Play();
     }
-
-
+    // The player receives health boost from the pickups and the value is based on the current wave
     public void HealthBoost()
     {
         maxhealthValue = Mathf.Round(maxhealthValue + (waveValueMultiplier * 5f));

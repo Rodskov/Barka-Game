@@ -118,7 +118,7 @@ public class PlayerControl : MonoBehaviour
         velocity.y += gravity * Time.deltaTime;
         controller.Move(velocity * Time.deltaTime);
     }
-
+    // These are the animation controls
     void Jump()
     {
         velocity.y = Mathf.Sqrt(jumpForce * -2 * gravity);

@@ -4,6 +4,7 @@ namespace UnityTemplateProjects
 {
     public class SimpleCameraController : MonoBehaviour
     {
+        // This script allows the shop to follow the player's camera
         class CameraState
         {
             public float yaw;

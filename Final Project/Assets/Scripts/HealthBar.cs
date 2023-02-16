@@ -10,6 +10,7 @@ public class HealthBar : MonoBehaviour
 	public Gradient gradient;
 	public Image fill;
 
+	// The health updates at the start of the game, and everytime the player is healed or damaged
 	public void SetMaxHealth(float health)
 	{
 		slider.maxValue = health;

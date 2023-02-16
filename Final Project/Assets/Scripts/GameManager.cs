@@ -14,13 +14,14 @@ public class GameManager : MonoBehaviour
     public Button quitButton;
    
 
-
+    // Locks the cursor when the game starts
     void Start()
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
     }
 
+    // Unlocks the cursor and shows the game over screen with restart and quit buttons
     public void gameOver()
     {
         Cursor.visible = true;
@@ -30,10 +31,12 @@ public class GameManager : MonoBehaviour
         restartButton.gameObject.SetActive(true);
         quitButton.gameObject.SetActive(true);
     }
+    // This restarts the game
     public void restartGame()
     {
         SceneManager.LoadScene("Scene 1");
     }
+    // This quits the game, bringing the user to the start menu
     public void quitGame()
     {
         SceneManager.LoadScene("Start Game");

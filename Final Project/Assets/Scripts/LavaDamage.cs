@@ -8,6 +8,7 @@ public class LavaDamage : MonoBehaviour
     public float time = 2f;
     public float damage = 1f;
 
+    // If the player falls unto the lava, the player will take damage
     private void OnTriggerEnter(Collider other)
     {
         if (other.GetComponent<PlayerStats>())
@@ -16,7 +17,7 @@ public class LavaDamage : MonoBehaviour
             StartCoroutine(TakeDamage(time, currentHealth));
         }
     }
-
+    // The damage is set into intervals
     IEnumerator TakeDamage(float time, PlayerStats currentHealth)
     {
         burnSound.Play();

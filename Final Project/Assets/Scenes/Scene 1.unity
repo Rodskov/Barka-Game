@@ -39946,7 +39946,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1865853521379726935, guid: 8af9f5ddcae2c604996797d59822f54c, type: 3}
       propertyPath: maxhealthValue
-      value: 500
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1865853521379726935, guid: 8af9f5ddcae2c604996797d59822f54c, type: 3}
       propertyPath: attackBuffSound

@@ -7,6 +7,7 @@ public class PlayerMovement : MonoBehaviour
 	public float speed = 2f;
 
 	Vector3 move;
+	// This refers to the camera movement and allows the player to move based on their perspective
     void Update()
     {
 		move.x = Input.GetAxis("Horizontal");

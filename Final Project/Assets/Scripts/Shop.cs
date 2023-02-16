@@ -25,7 +25,7 @@ public class Shop : MonoBehaviour
 
 
 
-    // Start is called before the first frame update
+    // This script manages the shop and unlocks the cursor
     void Start()
     {
         Cursor.visible = true;
@@ -47,7 +47,8 @@ public class Shop : MonoBehaviour
             buyBtn.AddEventListener(i, OnShopItemBtnClicked);
         }   
     }
-
+    // If the player has enough coins, the shop lets them buy the chosen item
+    // If the player does not have enough coins, the item cannot be bought
     void OnShopItemBtnClicked(int itemIndex)
     {
         int itemPrice = ShopItemsList[itemIndex].Price;
@@ -74,7 +75,7 @@ public class Shop : MonoBehaviour
         
 
     }
-
+    // If the chosen item is already bought, then it cannot be bought again and is shown as "ACQUIRED"
     void DisableBuyBtn()
     {
         buyBtn.interactable = false;
